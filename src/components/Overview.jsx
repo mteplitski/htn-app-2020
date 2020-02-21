@@ -15,19 +15,19 @@ export default class Overview extends Component {
 
   componentDidMount() {
     this.getProfileData();
-    getDoggo()
-    .then(res => {
-      const doggo = res.data.message;
-      this.setState({doggo});
-    })
   }
 
   getProfileData() {
     getProfile()
     .then(res => {
       const profile = res.data;
-      this.setState({ profile, loading: false });
+      this.setState({ profile, loading: false, doggo: null });
     });
+    getDoggo()
+    .then(res => {
+      const doggo = res.data.message;
+      this.setState({doggo});
+    })
   }
 
   // returns action as a readable string
